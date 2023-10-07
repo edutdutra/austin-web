@@ -1,6 +1,7 @@
 import {ChatContainer, MessagesContainer} from "./styles.ts";
 
 import {Message} from "../Message";
+import {MessageSender} from "../MessageSender";
 
 
 export function Chat() {
@@ -12,6 +13,7 @@ export function Chat() {
                 <Message/>
                 <Message isBot={true}/>
             </MessagesContainer>
+            <MessageSender />
         </ChatContainer>
     )
 }

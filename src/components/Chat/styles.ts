@@ -6,8 +6,11 @@ export const ChatContainer = styled.div`
 
   width: 640px;
   height: 480px;
+  padding: 1rem;
+  border-radius: 0.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
-
+  background-color: ${props => props.theme['gray-600']};
+  
   > :nth-child(1) {
     flex-grow: 1;
   }
