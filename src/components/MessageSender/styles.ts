@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const MessageSenderContainer = styled.div`
   display: flex;
   grid-gap: 8px;
-  padding: 16px;
+  
+  margin-top: 1rem;
 
   background-color: ${props => props.theme['gray-600']};
 `

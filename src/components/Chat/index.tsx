@@ -12,7 +12,20 @@ export function Chat() {
                 <Message/>
                 <Message/>
                 <Message isBot={true}/>
+                <Message isBot={true}/>
+                <Message/>
+                <Message/>
+                <Message isBot={true}/>
+                <Message isBot={true}/>
+                <Message/>
+                <Message/>
+                <Message isBot={true}/>
+                <Message isBot={true}/>
+                <Message/>
+                <Message/>
+                <Message isBot={true}/>
             </MessagesContainer>
+
             <MessageSender />
         </ChatContainer>
     )

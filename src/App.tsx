@@ -3,7 +3,7 @@ import {ThemeProvider} from "styled-components";
 import {GlobalStyle} from "./styles/global.ts";
 import {defaultTheme} from "./styles/themes/default.ts";
 
-import {Chat} from "./components/Chat";
+import {Home} from "./pages/Home";
 
 import './styles/reset.css'
 
@@ -13,7 +13,7 @@ function App() {
         <ThemeProvider theme={defaultTheme}>
             <GlobalStyle />
 
-            <Chat />
+            <Home />
         </ThemeProvider>
     )
 }
