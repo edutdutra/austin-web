@@ -28,11 +28,11 @@ export const MessageText = styled.span<MessageProps>`
   box-shadow: 0 3px 6px rgba(0, 0, 0, .10);
 
   ${props => !props.isBot && css`
-    background-color: ${props.theme['blue-500']};
+    background-color: ${props.theme['green-500']};
   `}
 
   ${props => props.isBot && css`
-    background-color: ${props.theme['green-500']};
+    background-color: ${props.theme['blue-500']};
   `}
 `
 

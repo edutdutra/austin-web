@@ -1,16 +1,17 @@
 import {MessageContainer, MessageContent, MessageText} from "./styles.ts";
 
 type Props = {
-    isBot?: boolean
+    isBot?: boolean,
+    content: string
 }
 
-export function Message({isBot = false}: Props) {
+export function Message({isBot = false, content}: Props) {
 
     return (
         <MessageContainer isBot={isBot}>
             <MessageContent isBot={isBot}>
                 <MessageText isBot={isBot}>
-                    Teste Mensagem
+                    {content}
                 </MessageText>
             </MessageContent>
         </MessageContainer>
