@@ -5,9 +5,11 @@ import {ChatContainer, MessagesContainer} from "./styles.ts";
 import {Message} from "../Message";
 import {MessageSender} from "../MessageSender";
 
+import {http} from "../../service/api.ts";
 import {MessageDTO} from "../../dtos/MessageDTO.ts";
 
 // ToDo - gerar um timestamp pra usar de key
+// ToDo - adicionar loading + possivel toast
 
 export function Chat() {
     const [messages, setMessages] = useState<MessageDTO[]>([{
@@ -15,9 +17,27 @@ export function Chat() {
         isBot: true
     }]);
 
-    function addMessage(newMassage: MessageDTO) {
-        setMessages(prevState => [...prevState, newMassage])
+    async function sendMessage(newMassage: MessageDTO) {
+        setMessages(prevState => [...prevState, newMassage]);
+
+        try {
+            const {data} = await http.post(`/chat/test123`, {message: newMassage.content})
+
+            if (data.message === 'text') {
+                const {text} = data.text;
+
+                setMessages(prevState => [...prevState, {content: text, isBot: true}]);
+            }
+
+            if (data.message === 'payload') {
+                console.log('PAYLOAD WITH IMAGE')
+            }
+
+        } catch (error) {
+            console.log('ERROR ON SEND MESSAGE => ', error)
+        }
     }
+
 
     return (
         <ChatContainer>
@@ -27,7 +47,7 @@ export function Chat() {
                 }
             </MessagesContainer>
 
-            <MessageSender onSendMessage={addMessage}/>
+            <MessageSender onSendMessage={sendMessage}/>
         </ChatContainer>
     )
 }

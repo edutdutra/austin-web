@@ -16,6 +16,8 @@ export const MessageContent = styled.div<MessageProps>`
   display: flex;
   grid-gap: 8px;
 
+  max-width: calc(100% - 15%);
+
   ${props => !props.isBot && css`
     flex-direction: row-reverse;
   `}
