@@ -8,7 +8,6 @@ import {MessageSender} from "../MessageSender";
 import {http} from "../../service/api.ts";
 import {MessageDTO} from "../../dtos/MessageDTO.ts";
 
-// ToDo - gerar um timestamp pra usar de key
 // ToDo - adicionar loading + possivel toast
 
 export function Chat() {
@@ -17,11 +16,13 @@ export function Chat() {
         isBot: true
     }]);
 
+    const sessionID = new Date().getTime()
+
     async function sendMessage(newMassage: MessageDTO) {
         setMessages(prevState => [...prevState, newMassage]);
 
         try {
-            const {data} = await http.post(`/chat/test123`, {message: newMassage.content})
+            const {data} = await http.post(`/chat/${sessionID}`, {message: newMassage.content})
 
             if (data.message === 'text') {
                 const {text} = data.text;
@@ -37,7 +38,6 @@ export function Chat() {
             console.log('ERROR ON SEND MESSAGE => ', error)
         }
     }
-
 
     return (
         <ChatContainer>
