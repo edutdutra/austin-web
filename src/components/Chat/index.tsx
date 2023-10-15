@@ -12,6 +12,7 @@ import {MessageDTO} from "../../dtos/MessageDTO.ts";
 
 export function Chat() {
     const [messages, setMessages] = useState<MessageDTO[]>([{
+        id: '0',
         content: 'Olá! Eu sou o Austin, um chatbot especializado em assuntos relacionados ao TEA, no que posso lhe ajudar?',
         isBot: true
     }]);
@@ -27,7 +28,7 @@ export function Chat() {
             if (data.message === 'text') {
                 const {text} = data.text;
 
-                setMessages(prevState => [...prevState, {content: text, isBot: true}]);
+                setMessages(prevState => [...prevState, {content: text, isBot: true, id: data.id}]);
             }
 
             if (data.message === 'payload') {
@@ -43,7 +44,7 @@ export function Chat() {
         <ChatContainer>
             <MessagesContainer>
                 {
-                    messages.map(message => <Message isBot={message.isBot} content={message.content}/>)
+                    messages.map(message => <Message key={message.id} isBot={message.isBot} content={message.content}/>)
                 }
             </MessagesContainer>
 

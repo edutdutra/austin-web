@@ -13,7 +13,7 @@ export function MessageSender({onSendMessage}: Props) {
 
     function handleSendMessage() {
         if (newMessage.trim().length > 0) {
-            onSendMessage({content: newMessage, isBot: false});
+            onSendMessage({content: newMessage, isBot: false, id: new Date().getTime().toString()});
 
             setNewMessage('');
         }
