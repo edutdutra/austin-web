@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MessageSenderContainer = styled.div`
+export const MessageSenderContainer = styled.form`
   display: flex;
   grid-gap: 8px;
   

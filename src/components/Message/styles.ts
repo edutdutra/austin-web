@@ -29,6 +29,9 @@ export const MessageText = styled.span<MessageProps>`
   border-radius: 7px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .10);
 
+  color: ${props => props.theme['white']};
+
+  
   ${props => !props.isBot && css`
     background-color: ${props.theme['green-500']};
   `}

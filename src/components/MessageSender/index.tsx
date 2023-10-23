@@ -1,5 +1,4 @@
-import {useState} from "react";
-
+import React, {useState} from "react";
 import {MessageSenderButton, MessageSenderContainer, MessageSenderInput} from "./styles.ts";
 
 import {MessageDTO} from "../../dtos/MessageDTO.ts";
@@ -11,7 +10,9 @@ type Props = {
 export function MessageSender({onSendMessage}: Props) {
     const [newMessage, setNewMessage] = useState('');
 
-    function handleSendMessage() {
+    function handleSendMessage(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
         if (newMessage.trim().length > 0) {
             onSendMessage({content: newMessage, isBot: false, id: new Date().getTime().toString()});
 
@@ -24,7 +25,7 @@ export function MessageSender({onSendMessage}: Props) {
     }
 
     return (
-        <MessageSenderContainer>
+        <MessageSenderContainer action="" onSubmit={handleSendMessage} onDragEnter={handleSendMessage}>
             <MessageSenderInput
                 placeholder="Pergunte algo para o Austin..."
                 onChange={(event) => handleNewMessage(event.target.value)}
@@ -32,8 +33,7 @@ export function MessageSender({onSendMessage}: Props) {
             />
 
             <MessageSenderButton
-                type="button"
-                onClick={handleSendMessage}
+                type="submit"
             >
                 Enviar
             </MessageSenderButton>
